@@ -1,24 +1,19 @@
+#include <stdio.h>
+#include <string.h>
 #include <fstream>
-#include <string>
-#include <iostream>
 
 using namespace std;
 
 int main(){
+    //criando o objeto do arquivo
+    ofstream arquivo;
 
-    //qual arquivo sera lido
-    ifstream input ("texto.txt");
+    //abre o arquivo
+    arquivo.open("texto.txt");
 
-    //stringque recebera o texto lido
-    string textoLido;
+    //esvazia arquivo
+    arquivo << "";
 
-    //passando o texto do arquivo que sera lido
-    for(string line; getline(input, line);){
-        textoLido += line;
-    }
-
-    //exibindo conteudo
-    cout << textoLido;
-
-    return 0;
+    //fecha arquivo
+    arquivo.close();
 }
