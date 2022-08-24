@@ -2,11 +2,52 @@
 #include <stdlib.h>
 #include <string>
 #include <iostream>
+#include <time.h>
 
 using namespace std;
 
 void limpaTela(){
     system("CLS");
+}
+
+string retornaPalavraAleatoria(){
+    //vetor com palavras disponiveis
+    string palavras[3] = {"Repolho", "Casa", "Ovolactovegetariano"};
+
+    //indice gerado no intervalo (0,1,2)
+    int indiceAleatorio = rand() % 3;
+
+    //exibe a palavra aleatoria
+    //cout << palavras[indiceAleatorio];
+    
+    return palavras[indiceAleatorio];
+}
+
+string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
+    int cont = 0;
+    string palavraComMascara;
+
+    //coloca uma mascara
+    while(cont < tamanhoDaPalavra){
+        palavraComMascara += "_";
+        cont++;
+    }
+
+    return palavraComMascara;
+}
+
+void jogarSozinho(){
+    //palavra a ser adivinhada
+    string palavra = retornaPalavraAleatoria();
+
+    //tamanho da palavra
+    int tamanhoDaPalavra = palavra.size();
+
+    //palavra mascarada
+    string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
+
+    cout << "A palavra secreta e: " << palavra << " (Tamanho:" << tamanhoDaPalavra << ")" ;
+    cout << "\nMascara: " << palavraComMascara;
 }
 
 void menuInicial(){
@@ -29,17 +70,24 @@ void menuInicial(){
         switch(opcao){
 
         case 1:
+            limpaTela();
             cout << "Iniciando Jogo\n";
+            jogarSozinho();
+            break;
         case 2:
             cout << "Informacoes do Jogo\n";
+            break;
         case 3:
-            cout << "Ate logo\n";
+            cout << "Ate logo\n"; 
             break;
         }
     }
 }
 
 int main(){
+    //criando valores aleatorios
+    srand((unsigned)time(NULL));
+
     menuInicial();
 
     return 0;
