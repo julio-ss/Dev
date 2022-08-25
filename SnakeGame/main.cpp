@@ -47,7 +47,7 @@ int main()
         printf("%c", 219);
     }
 
-     //APARECER ALETORIAMENTE A MAÇÃ NA TELA
+     //APARECER ALETORIAMENTE NA TELA
     srand(time(NULL));
     mx=(rand()%49)+1;
     my=(rand()%17)+1;
