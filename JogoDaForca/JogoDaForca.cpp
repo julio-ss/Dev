@@ -39,7 +39,12 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
 void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
     cout << "Palavra: " << palavraComMascara << "(Tamanho: " << tamanhoDaPalavra << " )";
     cout << "\nTetativas restantes: " << tentativasRestantes;
+
+    int cont;
     cout << "\nLetras arriscadas: " << letrasJaArriscadas;
+    for(cont = 0; cont < letrasJaArriscadas.size(); cont++){
+        cout << letrasJaArriscadas[cont] << ", ";
+    }
 }
 
 void jogarSozinho(){
