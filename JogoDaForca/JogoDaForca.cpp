@@ -36,10 +36,10 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     return palavraComMascara;
 }
 
-void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes){
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
     cout << "Palavra: " << palavraComMascara << "(Tamanho: " << tamanhoDaPalavra << " )";
     cout << "\nTetativas restantes: " << tentativasRestantes;
-
+    cout << "\nLetras arriscadas: " << letrasJaArriscadas;
 }
 
 void jogarSozinho(){
@@ -56,16 +56,18 @@ void jogarSozinho(){
     int tentativas = 0, maximoDeTentativas = 5;
     int cont = 0;
     char letra;
+    string letrasJaArriscadas;
 
     //calculando tentativas restantes
     while(palavra != palavraComMascara && maximoDeTentativas - tentativas > 0){
         limpaTela();
         //status atual do jogo
-        exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativas);
+        exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativas, letrasJaArriscadas);
 
         //le o palpite
         cout << "\nDigite uma letra: ";
         cin >> letra;
+        letrasJaArriscadas += letra;
 
         //percorre palavra, se acertar e exibida a letra
         for(cont = 0; cont < tamanhoDaPalavra; cont++){
