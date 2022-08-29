@@ -36,12 +36,14 @@ string retornaPalavraComMascara(string palavra, int tamanhoDaPalavra){
     return palavraComMascara;
 }
 
-void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas){
-    cout << "Palavra: " << palavraComMascara << "(Tamanho: " << tamanhoDaPalavra << " )";
+void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasRestantes, string letrasJaArriscadas, string mensagem){
+    cout << mensagem;
+    cout << "\nPalavra: " << palavraComMascara << "(Tamanho: " << tamanhoDaPalavra << " )";
     cout << "\nTetativas restantes: " << tentativasRestantes;
 
+    //exibe letras arriscadas
     int cont;
-    cout << "\nLetras arriscadas: " << letrasJaArriscadas;
+    cout << "\nLetras arriscadas: "; 
     for(cont = 0; cont < letrasJaArriscadas.size(); cont++){
         cout << letrasJaArriscadas[cont] << ", ";
     }
@@ -57,32 +59,58 @@ void jogarSozinho(){
     //palavra mascarada
     string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
-    ///variaveis gerais
-    int tentativas = 0, maximoDeTentativas = 5;
-    int cont = 0;
-    char letra;
-    string letrasJaArriscadas;
+    ///VARIAVEIS GERAIS
+    int tentativas = 0, maximoDeTentativas = 5;                                 //numero de tentativas e erros
+    int cont = 0;                                                              //laco de repeticao
+    char letra;                                                               //letra arriscada pelo usuario
+    string letrasJaArriscadas;                                               //acumula as tentativas do usuario
+    string mensagem = "Bem vindo ao jogo!";                                 //feedback do jogador
+    bool jaDigitouLetra = false, acertouLetra = false;                     //auxilia para saber as letras ja arriscadas
+
 
     //calculando tentativas restantes
     while(palavra != palavraComMascara && maximoDeTentativas - tentativas > 0){
         limpaTela();
         //status atual do jogo
-        exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativas, letrasJaArriscadas);
+        exibeStatus(palavraComMascara, tamanhoDaPalavra, maximoDeTentativas - tentativas, letrasJaArriscadas, mensagem);
 
         //le o palpite
         cout << "\nDigite uma letra: ";
         cin >> letra;
+
+    //percorre letras arriscadas
+    for(cont = 0; cont < tentativas; cont++){
+        //se encontrar a letra
+        if(letrasJaArriscadas[cont] == letra){
+            mensagem = "Essa letra ja foi digitada!";
+            //indica com a variavel booleana
+            jaDigitouLetra = true;
+        }
+    }
+
+    if(jaDigitouLetra == false){
         letrasJaArriscadas += letra;
 
         //percorre palavra, se acertar e exibida a letra
         for(cont = 0; cont < tamanhoDaPalavra; cont++){
             if(palavra[cont] == letra){                     //exibir letra na palavra
                 palavraComMascara[cont] = palavra[cont];    //exibir letra na palavra
+
+                 acertouLetra = true;
             }
         }
 
-        //aumenta uma tentativa
+         if(acertouLetra == false){
+            mensagem = "Voce errou uma letra!";
+        }else{
+             mensagem = "Voce acertou uma letra!";
+        }
+         //aumenta uma tentativa
         tentativas++;
+        }
+        //reinicia auxiliares
+        jaDigitouLetra = false;
+        acertouLetra = false;
     }
 
     if(palavra == palavraComMascara){
