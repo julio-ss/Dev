@@ -49,7 +49,7 @@ void exibeStatus(string palavraComMascara, int tamanhoDaPalavra, int tentativasR
     }
 }
 
-void jogarSozinho(){
+int jogarSozinho(){
     //palavra a ser adivinhada
     string palavra = retornaPalavraAleatoria();
 
@@ -60,12 +60,13 @@ void jogarSozinho(){
     string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
     ///VARIAVEIS GERAIS
-    int tentativas = 0, maximoDeTentativas = 5;                                 //numero de tentativas e erros
-    int cont = 0;                                                              //laco de repeticao
-    char letra;                                                               //letra arriscada pelo usuario
-    string letrasJaArriscadas;                                               //acumula as tentativas do usuario
-    string mensagem = "Bem vindo ao jogo!";                                 //feedback do jogador
-    bool jaDigitouLetra = false, acertouLetra = false;                     //auxilia para saber as letras ja arriscadas
+    int tentativas = 0, maximoDeTentativas = 5;               //numero de tentativas e erros
+    int cont = 0;                                             //laco de repeticao
+    char letra;                                               //letra arriscada pelo usuario
+    int opcao;                                                //opcaoes do jogo
+    string letrasJaArriscadas;                                //acumula as tentativas do usuario
+    string mensagem = "Bem vindo ao jogo!";                   //feedback do jogador
+    bool jaDigitouLetra = false, acertouLetra = false;        //auxilia para saber as letras ja arriscadas
 
 
     //calculando tentativas restantes
@@ -116,10 +117,21 @@ void jogarSozinho(){
     if(palavra == palavraComMascara){
         limpaTela();
         cout << "Parabens, voce venceu!";
+        cout << "\nDeseja reiniciar?";
+        cout << "\n1 - Sim.";
+        cout << "\n2 - Nao.";
+        cin >> opcao;
+
+        if(opcao == 1){
+            menuInicial();
+        }else{
+            cout << "Ate logo!";
+        }
     }
     else{
         limpaTela();
         cout << "Ops, voce perdeu!";
+         cout << "\nDeseja reiniciar?"
     }
     
 }
