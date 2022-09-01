@@ -76,7 +76,7 @@ int jogar(int numeroDeJogadores)
     string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
     /// VARIAVEIS GERAIS
-    int tentativas = 0, maximoDeTentativas = 10;       // numero de tentativas e erros
+    int tentativas = 0, maximoDeTentativas = 15;       // numero de tentativas e erros
     int cont = 0;                                      // laco de repeticao
     char letra;                                        // letra arriscada pelo usuario
     int opcao;                                         // opcaoes do jogo
@@ -203,9 +203,11 @@ void menuInicial()
         case 3:
             cout << "Informacoes do Jogo\n";
             limpaTela();
-            cout << "Jogo desenvolvido por Julio.";
+            cout << "nome: Jogo da forca";
+            cout << "\nano de criacao: 2022";
+            cout << "\ndesen.: Julio S Santos\n";
             cout << "\n1 - Voltar ao menu inicial.";
-            cout << "\n3 - Sair.";
+            cout << "\n2 - Sair.";
             cout << "\nOpcao: ";
             cin >> opcao;
             if (opcao == 1)
