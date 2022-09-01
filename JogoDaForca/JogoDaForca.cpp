@@ -90,11 +90,11 @@ int jogarSozinho(){
     }
 
     if(jaDigitouLetra == false){
-        letrasJaArriscadas += letra;
+        letrasJaArriscadas += tolower(letra);
 
         //percorre palavra, se acertar e exibida a letra
         for(cont = 0; cont < tamanhoDaPalavra; cont++){
-            if(palavra[cont] == letra){                     //exibir letra na palavra
+            if(palavra[cont] == tolower(letra)){            //exibir letra na palavra
                 palavraComMascara[cont] = palavra[cont];    //exibir letra na palavra
 
                  acertouLetra = true;
