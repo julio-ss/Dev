@@ -60,7 +60,7 @@ int jogarSozinho(){
     string palavraComMascara = retornaPalavraComMascara(palavra, tamanhoDaPalavra);
 
     ///VARIAVEIS GERAIS
-    int tentativas = 0, maximoDeTentativas = 5;               //numero de tentativas e erros
+    int tentativas = 0, maximoDeTentativas = 10;              //numero de tentativas e erros
     int cont = 0;                                             //laco de repeticao
     char letra;                                               //letra arriscada pelo usuario
     int opcao;                                                //opcaoes do jogo
@@ -120,19 +120,21 @@ int jogarSozinho(){
         cout << "\nDeseja reiniciar?";
         cout << "\n1 - Sim.";
         cout << "\n2 - Nao.";
+        cout << "\nOpcao: ";
         cin >> opcao;
-
-        if(opcao == 1){
-            menuInicial();
-        }else{
-            cout << "Ate logo!";
-        }
+        return opcao;
     }
     else{
         limpaTela();
         cout << "Ops, voce perdeu!";
-         cout << "\nDeseja reiniciar?"
+         cout << "\nDeseja reiniciar?";
+         cout << "\n1 - Sim.";
+         cout << "\n2 - Nao.";
+         cout << "\nOpcao: ";
+         cin >> opcao;
+         return opcao;
     }
+    return 0;
     
 }
 
@@ -157,8 +159,9 @@ void menuInicial(){
 
         case 1:
             limpaTela();
-            cout << "Iniciando Jogo\n";
-            jogarSozinho();
+            if(jogarSozinho() == 1){
+                menuInicial();
+            }
             break;
         case 2:
             cout << "Informacoes do Jogo\n";
